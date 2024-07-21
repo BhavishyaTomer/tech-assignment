@@ -1,22 +1,58 @@
-
 .blur {
   filter: blur(5px);
 }
-.tableColor{
-background-color: #879BAF
+
+.tableColor {
+  background-color: #879BAF;
 }
-.tableCell{
-color: #2C3E50;
-text-align: center;
-justify-content: center;
-font-weight: 500;
+
+.tableCell {
+  color: #2C3E50;
+  text-align: center;
+  justify-content: center;
+  font-weight: 500;
+  padding: 8px;
 }
-.deleteIcon{
-color: red;
+
+.deleteIcon {
+  color: red;
+  cursor: pointer;
 }
-.editIcon{
-color: green;
+
+.editIcon {
+  color: green;
+  cursor: pointer;
 }
-.custom-blur{
-filter: blur(5px);
+
+.custom-blur {
+  filter: blur(5px);
+}
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 767px) {
+  .tableCell {
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .size-5 {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 575px) {
+  .tableCell {
+    padding: 4px;
+    font-size: 12px;
+  }
+
+  .size-5 {
+    width: 16px;
+    height: 16px;
+  }
 }
