@@ -1,0 +1,22 @@
+
+.blur {
+  filter: blur(5px);
+}
+.tableColor{
+background-color: #879BAF
+}
+.tableCell{
+color: #2C3E50;
+text-align: center;
+justify-content: center;
+font-weight: 500;
+}
+.deleteIcon{
+color: red;
+}
+.editIcon{
+color: green;
+}
+.custom-blur{
+filter: blur(5px);
+}

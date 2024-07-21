@@ -1,0 +1,86 @@
+
+#default-modal {
+  overflow-y: auto;
+  max-height: 100vh;
+  padding: 1rem;
+}
+
+
+.customheight {
+  height: auto; 
+  border-radius: .4rem;
+ overflow: hidden;
+}
+
+
+@media (max-width: 640px) {
+  #default-modal {
+    padding-top: 1rem; 
+    overflow-y: auto;
+  }
+
+  #default-modal .customheight {
+    height: auto; 
+    max-height: 90vh; 
+  }
+  .customheight{
+    overflow: auto;
+  }
+
+  .transition-transform {
+    transition: transform 0.7s ease-in-out;
+  }
+
+
+  .translate-y-full {
+    transform: translateY(0); 
+  }
+}
+
+
+.btn-primary {
+  background-color: #2C3E50;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-primary:disabled {
+  background-color: #d3d3d3; 
+  color: #a9a9a9;
+  cursor: not-allowed;
+}
+
+
+::ng-deep .mat-calendar {
+  background-color: #242427;
+}
+
+::ng-deep .mat-calendar-body-cell-content,
+::ng-deep .mat-date-range-input-separator {
+  color: white;
+}
+
+::ng-deep .mat-calendar-body-selected {
+  background-color: #7b1fa2;
+  color: white;
+}
+
+::ng-deep .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+  border-color: rgba(255,255,255,.5);
+}
+
+::ng-deep .green-radio .mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #2C3E50 !important;
+}
+
+::ng-deep .green-radio .mat-radio-button.mat-accent .mat-radio-outer-circle {
+  border-color: #2C3E50 !important;
+}
+
+::ng-deep .green-radio .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #2C3E50 !important;
+}
+
+::ng-deep .green-radio .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: #2C3E50 !important;
+}

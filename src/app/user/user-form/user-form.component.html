@@ -1,0 +1,95 @@
+<div *ngIf="isModalOpen" id="default-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full h-full">
+  <div class="w-full sm:w-2/3 flex flex-col sm:flex-row transition-transform duration-300 ease-in-out transform mt-2 customheight" [ngClass]="{'translate-y-0': isModalOpen, 'translate-y-full': !isModalOpen}" style="background-color:#879BAF;">
+    <div class="w-full sm:w-full md:w-full p-3">
+      <h1 class="text-xl font-bold text-white capitalize" *ngIf="!Editflag">Add User</h1>
+      <h1 class="text-xl font-bold text-white capitalize" *ngIf="Editflag">Edit User</h1>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="grid grid-cols-1 gap-1 mt-4 sm:grid-cols-2">
+          <mat-form-field class="w-full sm:col-span-2 dark-theme-field">
+            <mat-label>User Id</mat-label>
+            <input matInput formControlName="userId" type="text">
+            <mat-error *ngIf="formControls['userId'].invalid && formControls['userId'].touched">
+              <span *ngIf="formControls['userId'].errors?.['required']">User Id is required.</span>
+              <span *ngIf="formControls['userId'].errors?.['minlength'] || formControls['userId'].errors?.['maxlength']">User Id must be 6 digits long.</span>
+              <span *ngIf="formControls['userId'].errors?.['pattern']">User Id must be a number.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="w-full dark-theme-field pr-1">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" type="text">
+            <mat-error *ngIf="formControls['firstName'].invalid && formControls['firstName'].touched">
+              <span *ngIf="formControls['firstName'].errors?.['required']">First Name is required.</span>
+              <span *ngIf="formControls['firstName'].errors?.['pattern']">First Name must contain only alphabetic characters.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="w-full dark-theme-field pl-1">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" type="text">
+            <mat-error *ngIf="formControls['lastName'].invalid && formControls['lastName'].touched">
+              <span *ngIf="formControls['lastName'].errors?.['pattern']">Last Name must contain only alphabetic characters.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="w-full sm:col-span-2 dark-theme-field">
+            <label class="text-white">Gender</label>
+            <mat-radio-group formControlName="gender" class="mt-2 flex green-radio">
+              <mat-radio-button value="male" class="mr-6">Male</mat-radio-button>
+              <mat-radio-button value="female">Female</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <mat-form-field class="w-full dark-theme-field pr-1">
+            <mat-label>DOB</mat-label>
+            <input matInput formControlName="dob" type="date" (change)="calculateAge()">
+            <mat-error *ngIf="formControls['dob'].invalid && formControls['dob'].touched">
+              <span *ngIf="formControls['dob'].errors?.['required']">Date of Birth is required.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="w-full dark-theme-field pl-1">
+            <mat-label>Age</mat-label>
+            <input matInput formControlName="age" type="number" readonly>
+            <mat-error *ngIf="formControls['age'].invalid && formControls['age'].touched">
+              <span *ngIf="formControls['age'].errors?.['required']">Age is required.</span>
+              <span *ngIf="formControls['age'].errors?.['min'] || formControls['age'].errors?.['max']">Age must be between 10 and 90.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="w-full dark-theme-field">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country">
+              <mat-option value="usa">United States</mat-option>
+              <mat-option value="canada">Canada</mat-option>
+              <mat-option value="uk">United Kingdom</mat-option>
+              <mat-option value="australia">Australia</mat-option>
+              <mat-option value="india">India</mat-option>
+            </mat-select>
+            <mat-error *ngIf="formControls['country'].invalid && formControls['country'].touched">
+              <span *ngIf="formControls['country'].errors?.['required']">Country is required.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="w-full sm:col-span-2 dark-theme-field">
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="address" rows="3"></textarea>
+            <mat-error *ngIf="formControls['address'].invalid && formControls['address'].touched">
+              <span *ngIf="formControls['address'].errors?.['required']">Address is required.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="flex justify-end space-x-4 mt-4">
+          <button type="button" (click)="closeModal()" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-500 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-600">Cancel</button>
+          <button type="submit" [disabled]="userForm.invalid" class="btn-primary px-6 py-2 leading-5 transition-colors duration-200 transform rounded-md hover:bg-pink-700 focus:outline-none focus:bg-pink-600">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="hidden lg:block w-full sm:w-1/2">
+      <img src="../../../assets/popup.jpeg" class="object-cover w-full h-full" alt="Employee Image" />
+    </div>
+  </div>
+</div>
