@@ -28,7 +28,6 @@ export class UserFormComponent {
       address: ['', Validators.required]
     });
 
-    // Subscribe to DOB changes to auto-calculate age
     this.userForm.get('dob')?.valueChanges.subscribe(dob => {
       if (dob) {
         this.calculateAge();
