@@ -50,7 +50,7 @@
 
           <mat-form-field class="w-full dark-theme-field pl-1">
             <mat-label>Age</mat-label>
-            <input matInput formControlName="age" type="number" readonly>
+            <input matInput formControlName="age" type="number" >
             <mat-error *ngIf="formControls['age'].invalid && formControls['age'].touched">
               <span *ngIf="formControls['age'].errors?.['required']">Age is required.</span>
               <span *ngIf="formControls['age'].errors?.['min'] || formControls['age'].errors?.['max']">Age must be between 10 and 90.</span>
